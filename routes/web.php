@@ -46,3 +46,6 @@ Route::get('/admin/tasks', [AdminController::class, 'tasks']);
 /* CLIENT */
 Route::post('/clients/store', [ClientController::class, 'store'])->name('clients.store');
 Route::put('/clients/{id}', [ClientController::class, 'update'])->name('clients.update');
+
+/* INVOICES */
+Route::get('/admin/invoices', [AdminController::class, 'invoices'])->name('admin.invoices');

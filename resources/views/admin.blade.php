@@ -366,6 +366,132 @@ form select:focus {
     }
 }
 
+/* INVOICES */
+.invoice-container {
+    padding: 20px;
+}
+
+.invoice-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.invoice-header h2 {
+    margin: 0;
+}
+
+.invoice-header p {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.btn-create {
+    background: #4f46e5;
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.cards {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.card {
+    flex: 1;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.card.green h3 {
+    color: #16a34a;
+}
+
+.card.red h3 {
+    color: #dc2626;
+}
+
+.filters {
+    margin: 20px 0;
+}
+
+.filters button {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    background: #e5e7eb;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.filters .active {
+    background: #4f46e5;
+    color: #fff;
+}
+
+.table-box {
+    background: #fff;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #f3f4f6;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.invoice-id {
+    color: #4f46e5;
+    font-weight: bold;
+}
+
+.status {
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+}
+
+.status.paid {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+.status.unpaid {
+    background: #fef3c7;
+    color: #d97706;
+}
+
+.status.overdue {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.text-red {
+    color: #dc2626;
+}
+
+.action {
+    margin-right: 10px;
+    cursor: pointer;
+    color: #6b7280;
+}
+
 .active { background:#dcfce7; color:#166534; }
 .inactive { background:#f3f4f6; color:#6b7280; }
 
@@ -412,10 +538,11 @@ form select:focus {
     
         <div class="menu-title">FINANCE</div>
 
-            <div class="sidebar-item">
-                <i class="fa fa-file-invoice"></i> Invoices
-            </div>
-
+    <div class="sidebar-item">
+        <a href="{{ route('admin.invoices') }}">
+            <i class="fa fa-file-invoice"></i> Invoices
+        </a>
+    </div>
             <div class="sidebar-item">
                 <i class="fa fa-credit-card"></i> Payments
             </div>

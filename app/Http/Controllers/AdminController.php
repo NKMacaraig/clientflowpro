@@ -74,6 +74,49 @@ class AdminController extends Controller
         return view('admin-tasks', compact('tasks'));
     }
 
-    
+    public function invoices(Request $request)
+    {
+        $status = $request->status;
+
+        $query = \App\Models\Invoice::with(['client', 'project']);
+
+        // FILTER LOGIC
+        if ($status && $status != 'all') {
+            if ($status == 'overdue') {
+                $query->where('due_date', '<', now())
+                    ->where('payment_status', '!=', 'paid');
+            } else {
+                $query->where('payment_status', $status);
+            }
+        }
+
+        $invoices = $query->get();
+
+        // CARDS (keep your existing logic)
+        $totalAmount = \App\Models\Invoice::sum('amount');
+        $totalCount = \App\Models\Invoice::count();
+
+        $paidAmount = \App\Models\Invoice::where('payment_status', 'paid')->sum('amount');
+        $paidCount = \App\Models\Invoice::where('payment_status', 'paid')->count();
+
+        $overdueAmount = \App\Models\Invoice::where('due_date', '<', now())
+            ->where('payment_status', '!=', 'paid')
+            ->sum('amount');
+
+        $overdueCount = \App\Models\Invoice::where('due_date', '<', now())
+            ->where('payment_status', '!=', 'paid')
+            ->count();
+
+        return view('admin-invoices', compact(
+            'invoices',
+            'totalAmount',
+            'totalCount',
+            'paidAmount',
+            'paidCount',
+            'overdueAmount',
+            'overdueCount',
+            'status'
+        ));
+    }
     
 }
