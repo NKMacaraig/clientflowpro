@@ -8,7 +8,7 @@
 <div class="table-box">
 
 <div class="table-header">
-    <input class="search-box" placeholder="Search clients...">
+    <input id="searchInput" type="text" class="search-box" placeholder="Search clients..." onkeyup="searchClients()">
     <button class="btn-add" onclick="openModal()">+ Add Client</button>
 </div>
 
@@ -112,7 +112,7 @@
         </tr>
     </thead>
 
-    <tbody>
+    <tbody  id="clientTable">
         @foreach($clients as $client)
         <tr>
             <td>{{ $client->company_name }}</td>
@@ -184,6 +184,31 @@ window.onclick = function(e) {
         closeEditModal();
     }
 }
+
+function searchClients() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let table = document.querySelector("table tbody");
+    let rows = table.getElementsByTagName("tr");
+
+    for (let i = 0; i < rows.length; i++) {
+        let company = rows[i].getElementsByTagName("td")[0];
+        let contact = rows[i].getElementsByTagName("td")[1];
+
+        if (company || contact) {
+            let companyText = company.textContent.toLowerCase();
+            let contactText = contact.textContent.toLowerCase();
+
+            if (companyText.startsWith(input) || contactText.startsWith(input)) {
+                rows[i].style.display = "";
+            } else {
+                rows[i].style.display = "none";
+            }
+        }
+    }
+}
+
 </script>
+
+
 
 @endsection

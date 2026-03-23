@@ -43,6 +43,21 @@ body {
     margin-bottom:25px;
 }
 
+.user-info {
+    text-align: right;
+}
+
+.user-name {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.user-email {
+    display: block;
+    font-size: 12px;
+    color: #6b7280;
+}
+
 .menu-title {
     font-size:12px;
     color:#9ca3af;
@@ -247,6 +262,10 @@ tr {
     inset: 0;
     background: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(3px);
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
 }
 
 /* Card container */
@@ -563,7 +582,15 @@ th, td {
 
     <div class="nav-right">
         <button class="btn">+ Quick Create</button>
-        <div>John Doe</div>
+
+    <div class="user-info">
+        <div class="user-name">
+            {{ Auth::user()->name }} ({{ Auth::user()->role }})
+        </div>
+        <small class="user-email">
+            {{ Auth::user()->email }}
+        </small>
+    </div>
     </div>
 </div>
 
