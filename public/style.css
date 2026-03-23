@@ -1,0 +1,282 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html,body{
+height:100%;
+font-family:'Inter',sans-serif;
+background:#f5f6f8;
+color:#111;
+text-align:center;
+}
+
+/* MAIN PAGE LAYOUT */
+
+body{
+display:flex;
+flex-direction:column;
+overflow:hidden;
+}
+
+/* CONTENT AREA */
+
+main{
+flex:1;
+display:flex;
+flex-direction:column;
+justify-content:space-evenly;
+}
+
+/* NAVBAR */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:30px 60px;
+background:linear-gradient(90deg,#5f7cff,#4a6cf7);
+color:white;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:15px;
+font-weight:600;
+font-size:18px;
+}
+
+.logo i{
+font-size:30px;  
+}
+
+.nav-buttons a{
+text-decoration:none;
+padding:10px 25px;
+border-radius:6px;
+margin-left:10px;
+font-size:14px;
+font-weight:500;
+}
+
+.signup{
+background:black;
+color:white;
+}
+
+.login{
+background:#1d4ed8;
+color:white;
+}
+
+/* HERO */
+
+.hero{
+padding:40px 20px;
+max-width:800px;
+margin:auto;
+}
+
+.hero h1{
+font-size:38px;
+margin-bottom:10px;
+}
+
+.hero p{
+color:#6b7280;
+font-size:15px;
+}
+
+/* SECTIONS */
+
+.features,
+.why{
+padding:20px;
+}
+
+.features h2,
+.why h2{
+font-size:26px;
+margin-bottom:8px;
+}
+
+.subtext{
+color:#6b7280;
+margin-bottom:25px;
+}
+
+/* CARDS */
+
+.cards{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:20px;
+}
+
+.card{
+background:white;
+padding:25px;
+width:200px;
+border-radius:12px;
+box-shadow:0 6px 18px rgba(0,0,0,0.06);
+transition:0.3s;
+}
+
+.card.large{
+width:250px;
+}
+
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* ICON */
+
+.icon-box{
+width:48px;
+height:48px;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:auto;
+border-radius:10px;
+background:#eef2ff;
+margin-bottom:12px;
+}
+
+.icon-box i{
+font-size:20px;
+color:#4a6cf7;
+}
+
+.icon-box.blue{
+background:#2563eb;
+}
+
+.icon-box.blue i{
+color:white;
+}
+
+.card h3{
+font-size:16px;
+}
+
+.card p{
+font-size:14px;
+color:#6b7280;
+margin-top:5px;
+}
+
+/* ENABLE SCROLL ONLY WHEN SCREEN IS SMALL */
+
+@media (max-height:850px), (max-width:768px){
+
+body{
+overflow:auto;
+}
+
+}
+
+/* LOGIN CSS */
+
+
+.login-popup{
+position:absolute;
+top:70px;
+right:40px;
+width:420px;        
+background:#1e1e1e;
+color:white;
+padding:40px;       
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,0.3);
+display:none;
+z-index:1000;
+text-align:left;
+}
+
+.login-popup h2{
+text-align:center;
+margin-bottom:5px;
+}
+
+.login-sub{
+text-align:center;
+font-size:13px;
+color:#aaa;
+margin-bottom:20px;
+}
+
+.login-tabs{
+display:flex;
+justify-content:space-between;
+margin-bottom:20px;
+border-bottom:3px solid #555;
+}
+
+.login-tabs span{
+padding-bottom:6px;
+cursor:pointer;
+}
+
+.login-tabs .active{
+border-bottom:3px solid #2563eb;
+}
+
+.login-popup label{
+display:block;
+margin-top:10px;
+font-size:14px;
+}
+
+.login-popup input{
+width:100%;
+padding:10px;
+border-radius:8px;
+border:none;
+margin-top:5px;
+margin-bottom:10px;
+}
+
+.login-popup button{
+background:#2563eb;
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* */
+.login-tabs{
+position:relative;
+display:flex;
+justify-content:space-between;
+margin-bottom:20px;
+border-bottom:3px solid #555;
+}
+
+.login-tabs span{
+flex:1;
+text-align:center;
+padding-bottom:8px;
+cursor:pointer;
+position:relative;
+z-index:2;
+}
+
+.tab-slider{
+position:absolute;
+bottom:-3px;
+left:0;
+width:50%;
+height:3px;
+background:#2563eb;
+transition:0.3s;
+}
+
+/*admindashboard*/
