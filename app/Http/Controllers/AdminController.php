@@ -66,6 +66,7 @@ class AdminController extends Controller
         $critical = \App\Models\Project::where('status', 'delayed')->count();
 
         return view('admin-projects', compact('projects','healthy','risk','critical'));
+        
     }
 
     public function tasks()
@@ -78,7 +79,7 @@ class AdminController extends Controller
     {
         $status = $request->status;
 
-        $query = \App\Models\Invoice::with(['client', 'project']);
+        $query = \App\Models\Invoice::with(['client', 'project', 'payments']);
 
         // FILTER LOGIC
         if ($status && $status != 'all') {
@@ -92,7 +93,7 @@ class AdminController extends Controller
 
         $invoices = $query->get();
 
-        // CARDS (keep your existing logic)
+        // CARDS 
         $totalAmount = \App\Models\Invoice::sum('amount');
         $totalCount = \App\Models\Invoice::count();
 
@@ -118,5 +119,5 @@ class AdminController extends Controller
             'status'
         ));
     }
-    
+
 }

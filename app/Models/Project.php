@@ -31,4 +31,9 @@ class Project extends Model
     {
         return $this->hasMany(Invoice::class);
     }
+    
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

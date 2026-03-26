@@ -43,19 +43,102 @@ body {
     margin-bottom:25px;
 }
 
+
+/* NAVBAR LAYOUT */
+.navbar {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 25px;
+    background:#fff;
+    border-bottom:1px solid #e5e7eb;
+}
+
+/* LEFT */
+.nav-left {
+    display:flex;
+    align-items:center;
+}
+
+/* SEARCH */
+.search-box {
+    background:#f1f5f9;
+    padding:10px 14px;
+    border-radius:10px;
+    width:320px;
+    border:none;
+    outline:none;
+    transition:0.2s;
+}
+
+.search-box:focus {
+    background:#fff;
+    border:1px solid #6366f1;
+    box-shadow:0 0 0 3px rgba(99,102,241,0.1);
+}
+
+/* RIGHT */
+.nav-right {
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+/* ICON */
+.nav-icon {
+    width:38px;
+    height:38px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#f3f4f6;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.nav-icon:hover {
+    background:#e5e7eb;
+}
+
+/* USER INFO */
 .user-info {
-    text-align: right;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    cursor:pointer;
+}
+
+/* AVATAR */
+.avatar {
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:#6366f1;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:600;
+}
+
+/* USER TEXT */
+.user-details {
+    display:flex;
+    flex-direction:column;
+    line-height:1.2;
 }
 
 .user-name {
-    font-weight: 600;
-    font-size: 14px;
+    font-size:15px;
+    font-style:oblique 10deg ;
+    font-weight:600;
+    color:#111827;
 }
 
-.user-email {
-    display: block;
-    font-size: 12px;
-    color: #6b7280;
+.user-role {
+    font-size:13px;
+    color:#6b7280;
 }
 
 .menu-title {
@@ -125,36 +208,91 @@ body {
     padding:25px;
 }
 
+.dashboard-header {
+    margin-bottom: 20px;
+}
+
+.dashboard-header h2 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.dashboard-header p {
+    color: #6b7280;
+    font-size: 14px;
+}
+
 /* CARDS */
 .cards {
-    display:flex;
-    gap:20px;
-    margin:20px 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.stat-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.stat-card h2 {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.stat-card h4 {
+    font-size: 13px;
+    color: #9ca3af;
+    margin-bottom: 6px;
 }
 
 .card {
-    background:#fff;
-    padding:20px;
-    border-radius:12px;
-    flex:1;
-    border:1px solid #e5e7eb;
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid #e5e7eb;
+    padding: 18px;
+    transition: 0.2s ease;
 }
 
-.card h4 {
-    font-size:13px;
-    color:#6b7280;
-    margin-bottom:10px;
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
 }
 
-.card h2 {
-    font-size:22px;
+.icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #fff;
 }
+
+.icon.blue { background:#3b82f6; }
+.icon.purple { background:#6366f1; }
+.icon.green { background:#10b981; }
+.icon.yellow { background:#f59e0b; }
+
 
 /* GRID */
 .grid {
-    display:grid;
+    display: grid;
     grid-template-columns: 1fr 1fr;
-    gap:20px;
+    gap: 20px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* TABLE */
@@ -251,88 +389,6 @@ tr {
 /* optional hover (subtle, not clickable) */
 .sidebar-item:hover {
     background:#f3f4f6;
-}
-
-/* add clients modal */
-/* Background overlay */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(3px);
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-}
-
-/* Card container */
-.modal-card {
-    background: #f9fafc;
-    width: 420px;
-    margin: 60px auto;
-    padding: 20px 22px;
-    border-radius: 14px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    animation: fadeIn 0.25s ease;
-}
-
-/* Header */
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.modal-header h2 {
-    font-size: 18px;
-    font-weight: 600;
-    color: #2d3748;
-}
-
-.close {
-    font-size: 20px;
-    cursor: pointer;
-    color: #888;
-}
-
-/* Labels */
-form label {
-    font-size: 13px;
-    color: #6b7280;
-    display: block;
-    margin-bottom: 4px;
-}
-
-/* Inputs */
-form input,
-form select {
-    width: 100%;
-    padding: 10px 12px;
-    margin-bottom: 12px;
-    border-radius: 8px;
-    border: 1px solid #e5e7eb;
-    background: #fff;
-    font-size: 14px;
-    outline: none;
-    transition: 0.2s;
-}
-
-form input:focus,
-form select:focus {
-    border-color: #6366f1;
-    box-shadow: 0 0 0 2px rgba(99,102,241,0.1);
-}
-
-/* Footer buttons */
-.modal-footer {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 10px;
 }
 
 /* Buttons */
@@ -511,8 +567,125 @@ th, td {
     color: #6b7280;
 }
 
+
+/* TASK*/
+.assigned-user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #6366f1;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+/* STATUS COLORS */
+.status-completed { background:#d1fae5; color:#065f46; }
+.status-progress { background:#dbeafe; color:#1e40af; }
+.status-todo { background:#e5e7eb; color:#374151; }
+.status-review { background:#fef3c7; color:#92400e; }
+
+/* PRIORITY */
+.priority-high { background:#fee2e2; color:#991b1b; }
+.priority-medium { background:#fef3c7; color:#92400e; }
+.priority-low { background:#d1fae5; color:#065f46; }
+
+.badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+}
+
+/* ACTION BUTTON */
+.action-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
 .active { background:#dcfce7; color:#166534; }
 .inactive { background:#f3f4f6; color:#6b7280; }
+
+/* PROJECT MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+}
+
+.modal-card {
+    background: #fff;
+    width: 500px;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.modal-header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.modal-card input,
+.modal-card textarea,
+.modal-card select {
+    width:100%;
+    padding:8px;
+    margin:5px 0 12px;
+    border:1px solid #ddd;
+    border-radius:6px;
+}
+
+.row {
+    display:flex;
+    gap:10px;
+}
+
+
+.selected-users span {
+    display:inline-block;
+    background:#6366f1;
+    color:#fff;
+    padding:4px 8px;
+    margin:3px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.modal-footer {
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+}
+
+.btn-submit {
+    background:#6366f1;
+    color:#fff;
+    padding:8px 14px;
+    border:none;
+    border-radius:6px;
+}
+
+.btn-cancel {
+    background:#e5e7eb;
+    padding:8px 14px;
+    border:none;
+    border-radius:6px;
+}
+/* PROJECT MODAL END*/
 
 </style>
 </head>
@@ -562,14 +735,14 @@ th, td {
             <i class="fa fa-file-invoice"></i> Invoices
         </a>
     </div>
-            <div class="sidebar-item">
+ <!--           <div class="sidebar-item">
                 <i class="fa fa-credit-card"></i> Payments
             </div>
 
             <div class="sidebar-item">
                 <i class="fa fa-chart-line"></i> Analytics
             </div>
-
+-->
         
 </div>
 
@@ -578,20 +751,36 @@ th, td {
 
 <!-- NAVBAR -->
 <div class="navbar">
-    <input type="text" class="search-box" placeholder="Search clients, projects, tasks...">
 
+    <!-- SEARCH -->
+    <div class="nav-left">
+        <input type="text" class="search-box" placeholder="🔍 Search clients, projects, tasks...">
+    </div>
+
+    <!-- RIGHT SIDE -->
     <div class="nav-right">
-        <button class="btn">+ Quick Create</button>
 
-    <div class="user-info">
-        <div class="user-name">
-            {{ Auth::user()->name }} ({{ Auth::user()->role }})
+        <!-- NOTIFICATION ICON -->
+        <div class="nav-icon">🔔</div>
+
+        <!-- USER PROFILE -->
+        <div class="user-info">
+            <div class="avatar">
+                {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+            </div>
+
+            <div class="user-details">
+                <span class="user-name">
+                    {{ Auth::user()->name }}
+                </span>
+                <span class="user-role">
+                    {{ Auth::user()->role }}
+                </span>
+            </div>
         </div>
-        <small class="user-email">
-            {{ Auth::user()->email }}
-        </small>
+
     </div>
-    </div>
+
 </div>
 
 <!-- CONTENT -->

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class Invoice extends Model
 {
@@ -31,5 +32,14 @@ class Invoice extends Model
     public function payments()
     {
         return $this->hasMany(Payment::class);
+    }
+
+    public function downloadInvoice(Invoice $invoice)
+    {
+        $invoice->load(['client', 'project', 'payments']);
+
+        $pdf = Pdf::loadView('admin-invoice-pdf', compact('invoice'));
+
+        return $pdf->download('Invoice-' . $invoice->id . '.pdf');
     }
 }

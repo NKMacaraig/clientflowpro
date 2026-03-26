@@ -6,7 +6,8 @@ use App\Http\Controllers\SignupController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\InvoiceController;
-
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TaskController;
 
 /* HOME */
 Route::get('/', function () {
@@ -40,8 +41,6 @@ Route::get('/', function () {
 /* ADMIN */
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard']);
 Route::get('/admin/clients', [AdminController::class, 'clients']);
-Route::get('/admin/projects', [AdminController::class, 'projects']);
-Route::get('/admin/tasks', [AdminController::class, 'tasks']);
 
 /* CLIENT */
 Route::post('/clients/store', [ClientController::class, 'store'])->name('clients.store');
@@ -49,3 +48,12 @@ Route::put('/clients/{id}', [ClientController::class, 'update'])->name('clients.
 
 /* INVOICES */
 Route::get('/admin/invoices', [AdminController::class, 'invoices'])->name('admin.invoices');
+Route::get('/admin/invoices/{invoice}/download', [AdminController::class, 'downloadInvoice'])->name('admin.invoices.download');
+
+/* PROJECT TASK */
+Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
+Route::get('/admin/projects', [ProjectController::class, 'index'])->name('projects.index');
+
+/* TASK */
+Route::get('/admin/tasks', [TaskController::class, 'index'])->name('admin-tasks');
+Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
